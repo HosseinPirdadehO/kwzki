@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ثبت‌نام</title>
+  </head>
+  <body>
+    <h2>فرم ثبت‌نام کاربر</h2>
+    <form method="POST">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">ثبت</button>
+    </form>
+  </body>
+</html>

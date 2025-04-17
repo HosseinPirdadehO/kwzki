@@ -3,7 +3,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-from .views import UpdateMeView, ChangePasswordView, MeView, UserViewSet, RegisterView
+from .views import UpdateMeView, ChangePasswordView, MeView, UserViewSet, RegisterView, register_view
 from rest_framework.routers import DefaultRouter
 from django.urls import path
 
@@ -21,4 +21,5 @@ urlpatterns = [
     path('change-password/', ChangePasswordView.as_view(), name='change-password'),
     path('me/update/', UpdateMeView.as_view(), name='update-me'),
     path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('form-register/', register_view, name='form-register'),
 ]

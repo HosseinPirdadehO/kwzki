@@ -1,3 +1,6 @@
+from rest_framework import generics
+from .forms import CustomUserRegisterForm
+from django.shortcuts import render, redirect
 from .serializers import CustomTokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import PublicUserSerializer
@@ -87,3 +90,14 @@ class UpdateMeView(UpdateAPIView):
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+
+
+def register_view(request):
+    if request.method == 'POST':
+        form = CustomUserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = CustomUserRegisterForm()
+    return render(request, 'form.html', {'form': form})
